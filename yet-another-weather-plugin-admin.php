@@ -109,7 +109,7 @@
 <?php    echo "<h3>" . __( 'Current City' ) . "</h3>"; 
 
 echo '<p>' . __("Currently displaying: ") . $yawp_city_display_name . '</p>';
-echo '<p>' . __("Current city openweathemap id: ") . $yawp_city_id . '</p><br /><hr />';
+echo '<p>' . __("Current city openweathermap id: ") . $yawp_city_id . '</p><br /><hr />';
 
 ?>	
 
@@ -129,7 +129,7 @@ echo '<p>' . __("Current city openweathemap id: ") . $yawp_city_id . '</p><br />
         <input type="hidden" name="yawp_save_changes" value="Y">  
 
 		<input type="hidden" id="yawp_city_id" name="yawp_city_id" value="<?php echo $yawp_city_id; ?>" >  
-        <p><?php _e("City name to display on the page: "); ?><input type="text" id="yawp_city_display_name" name="yawp_city_display_name" value="<?php echo $yawp_city_display_name; ?>" size="40"><?php _e(' Edit this field if you want to have a custom name of the city to be displayed on the page. For example, you can change "Los Angeles" to LA or add a state/province label like "Vancouver, BC".' ); ?></p>
+     
         <br />    
         <hr />
         
@@ -139,6 +139,8 @@ echo '<p>' . __("Current city openweathemap id: ") . $yawp_city_id . '</p><br />
 		<hr />
 
 		<?php    echo "<h3>" . __( 'Appearance Settings' ) . "</h3>"; ?>
+
+		<p><?php _e("City name to display on the page: "); ?><input type="text" id="yawp_city_display_name" name="yawp_city_display_name" value="<?php echo $yawp_city_display_name; ?>" size="40"><?php _e(' Edit this field if you want to have a custom name of the city to be displayed on the page. For example, you can change "Los Angeles" to LA or add a state/province label like "Vancouver, BC".' ); ?></p>
 
         <p><?php _e("Scale: " ); ?><input type="radio" name="yawp_scale" value="C" <?php echo $yawp_scale_c; ?>><?php _e("&degC " ); ?>    
         <input type="radio" name="yawp_scale" value="F" <?php echo $yawp_scale_f; ?>><?php _e("&degF " ); ?></p>
