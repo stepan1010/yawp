@@ -3,6 +3,18 @@ Yet Another Weather Plugin (Yawp)
 
 Yet Another Weather Plugin is a WordPress plugin which allows you to retrive weather information from openweathermap.org and display it on your website.
 
+Changelog
+====
+
+#### 1.1
+
+Settings page reorganized and improved.
+Current city openweathermap id is now visible in the settings page.
+Can now edit widget's style from the settings page.
+
+#### 1.0
+
+Initial plugin release.
 
 FAQ
 ====
@@ -12,11 +24,7 @@ FAQ
 There are two ways to run this plugin.
 
 1. Through `"Widget"` menu under `"Appearance"` settings.
-2. Manually, using shortcode `[yawp_display]`. The shortcode can be embedded anywhere on a page.
-
-#### How do I change widgets background or font?
-
-You can do this by editing `yawp.css` in `plugins->yet-another-weather-plugin->css->yawp.css`. Customizing background through settings page is coming in the next update.
+2. Manually, using shortcode `[yawpdisplay]`. The shortcode can be embedded anywhere on a page.
 
 #### Can I use custom icon set?
 

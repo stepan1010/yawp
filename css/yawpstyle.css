@@ -1,34 +1,27 @@
 #yawp_weather_widget {
-background:#1A1A1A;
-border: 1px solid #141414;
-border-radius:5px;
-box-shadow: 0 0 4px #303030;
-font-family:Helvetica;
-font-size:18px;
-color:#E8E8E8;
-text-align:center;
-width:200px;
-margin:50px auto 50px;
-float:none;
+	text-align: center;
+	width: 200px;
+	margin: 50px auto 50px;
+	float: none;
 }
 
 .yawp_weather {
-font-size:18px;
-padding:10px 0px 10px;
+	font-size:18px;
+	padding:10px 0px 10px;
 }
 
 #yawp_temperature_section {
-font-size:42px;
-vertical-align: middle;
+	font-size:42px;
+	vertical-align: middle;
 }
 
 #yawp_city_name_section {
-font-size:25px;
+	font-size:25px;
 }
 
 #yawp_weather_icon_section {
-background-repeat:no-repeat;
-background-position:center;
-background-origin:content-box;
-padding:0px; 
+	background-repeat:no-repeat;
+	background-position:center;
+	background-origin:content-box;
+	padding:0px; 
 }

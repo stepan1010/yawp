@@ -1,7 +1,7 @@
 <?php
 
 	/*
-	* This is the settings page for Yawp plugin. A user my customize city and apperacne settings here.
+	* This is the settings page for Yawp plugin. A user my customize city and appearance settings here.
 	* Once saved. The settings are being sent to this page via $_POST. An if statement below handles the data.
 	*/
 
@@ -13,7 +13,13 @@
 		*/
 
 		$yawp_city_display_name = $_POST['yawp_city_display_name'];  
-        update_option('yawp_city_display_name', $yawp_city_display_name);  
+        update_option('yawp_city_display_name', $yawp_city_display_name);
+
+        $yawp_widget_font_style = $_POST['yawp_widget_font_style'];
+        update_option('yawp_widget_font_style', $yawp_widget_font_style);
+
+        $yawp_widget_bg_style = $_POST['yawp_widget_bg_style'];
+        update_option('yawp_widget_bg_style', $yawp_widget_bg_style);
      
         $yawp_city_id = $_POST['yawp_city_id'];  
     	if($yawp_city_id != get_option('yawp_city_id')) // Clear cached weather in case city id was changed
@@ -85,6 +91,8 @@
         $yawp_display_conditions = get_option('yawp_display_conditions');
        	$yawp_display_icon = get_option('yawp_display_icon');
         $yawp_display_temperature = get_option('yawp_display_temperature');
+        $yawp_widget_bg_style = get_option('yawp_widget_bg_style');
+        $yawp_widget_font_style = get_option('yawp_widget_font_style');
 
         $yawp_cache_time = get_option('yawp_cache_time') == '' ? 30 : get_option('yawp_cache_time');
 
@@ -98,8 +106,14 @@
 <?php    echo "<h2>" . __( 'Yawp Settings' ) . "</h2>"; ?>
 
 <hr />
-	
-<?php    echo "<h3>" . __( 'City Settings' ) . "</h3>"; ?>
+<?php    echo "<h3>" . __( 'Current City' ) . "</h3>"; 
+
+echo '<p>' . __("Currently displaying: ") . $yawp_city_display_name . '</p>';
+echo '<p>' . __("Current city openweathemap id: ") . $yawp_city_id . '</p><br /><hr />';
+
+?>	
+
+<?php    echo "<h3>" . __( 'New City Settings' ) . "</h3>"; ?>
       
 	<p><?php _e("Enter a city to look up: "); ?><input type="text" id="yawp_city" name="yawp_city" value="" size="40"><?php _e(" Example: San Diego" ); ?></p>
 	<button type="button" id="find_city">Find City</button>
@@ -116,18 +130,25 @@
 
 		<input type="hidden" id="yawp_city_id" name="yawp_city_id" value="<?php echo $yawp_city_id; ?>" >  
         <p><?php _e("City name to display on the page: "); ?><input type="text" id="yawp_city_display_name" name="yawp_city_display_name" value="<?php echo $yawp_city_display_name; ?>" size="40"><?php _e(' Edit this field if you want to have a custom name of the city to be displayed on the page. For example, you can change "Los Angeles" to LA or add a state/province label like "Vancouver, BC".' ); ?></p>
+        <br />    
+        <hr />
+        
+        <?php    echo "<h3>" . __( 'Update Settings' ) . "</h3>"; ?>
         <p><?php _e("Please specify update interval in minutes: "); ?><input type="text" name="yawp_cache_time" value="<?php echo $yawp_cache_time; ?>" size="5"><?php _e(' 30 minutes by default' ); ?></p>
-        <p><?php _e("Scale: " ); ?><input type="radio" name="yawp_scale" value="C" <?php echo $yawp_scale_c; ?>><?php _e("&degC " ); ?>    
-		<input type="radio" name="yawp_scale" value="F" <?php echo $yawp_scale_f; ?>><?php _e("&degF " ); ?></p>
 		<br />    
 		<hr />
 
-		<?php    echo "<h3>" . __( 'Advanced Settings' ) . "</h3>"; ?>
+		<?php    echo "<h3>" . __( 'Appearance Settings' ) . "</h3>"; ?>
 
-		<p><?php _e("Display weather icon: "); ?><input type="checkbox" name="yawp_display_icon" id="yawp_display_icon" <?php echo $yawp_display_icon; ?>>
-		<p><?php _e("Display weather conditions: "); ?><input type="checkbox" name="yawp_display_conditions" id="yawp_display_conditions" <?php echo $yawp_display_conditions; ?>>
-		<p><?php _e("Display wind speed: "); ?><input type="checkbox" name="yawp_display_wind" id="yawp_display_wind" <?php echo $yawp_display_wind; ?>>
-		<p><?php _e("Display temperature: "); ?><input type="checkbox" name="yawp_display_temperature" id="yawp_display_temperature" <?php echo $yawp_display_temperature; ?>>
+        <p><?php _e("Scale: " ); ?><input type="radio" name="yawp_scale" value="C" <?php echo $yawp_scale_c; ?>><?php _e("&degC " ); ?>    
+        <input type="radio" name="yawp_scale" value="F" <?php echo $yawp_scale_f; ?>><?php _e("&degF " ); ?></p>
+
+		<p><?php _e("Display weather icon: "); ?><input type="checkbox" name="yawp_display_icon" id="yawp_display_icon" <?php echo $yawp_display_icon; ?>></p>
+		<p><?php _e("Display weather conditions: "); ?><input type="checkbox" name="yawp_display_conditions" id="yawp_display_conditions" <?php echo $yawp_display_conditions; ?>></p>
+		<p><?php _e("Display wind speed: "); ?><input type="checkbox" name="yawp_display_wind" id="yawp_display_wind" <?php echo $yawp_display_wind; ?>></p>
+		<p><?php _e("Display temperature: "); ?><input type="checkbox" name="yawp_display_temperature" id="yawp_display_temperature" <?php echo $yawp_display_temperature; ?>></p>
+        <p><?php _e("Widget's background style: "); ?></p><textarea cols="70" rows="5" name="yawp_widget_bg_style" id="yawp_widget_bg_style" ><?php echo $yawp_widget_bg_style; ?></textarea>
+        <p><?php _e("Widget's font style: "); ?></p><textarea cols="70" rows="5" name="yawp_widget_font_style" id="yawp_widget_font_style" ><?php echo $yawp_widget_font_style; ?></textarea>
 				
         <p class="submit">  
         <input type="submit" name="Submit" value="<?php _e('Save Options', 'yawp_trdom' ) ?>" />  

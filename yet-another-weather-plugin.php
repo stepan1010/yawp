@@ -3,11 +3,29 @@
 Plugin Name: Yawp
 Plugin URI: http://stepasyuk.com/yawp/
 Description: Allows to retrive weather for a given city from openweathermap.org
-Version: 1.0
+Version: 1.1
 Author: Stepan Stepasyuk
 Author URI: http://stepasyuk.com
 License: GPLv2
 */
+
+/*
+* Since version 1.1 it is possible to edit plugin's css file from the Options page. The code below checks
+* is current version of the plugin is less than 1.1 and upgrades the plugin if needed.
+*/
+
+add_action('init', 'yawp_check_version');
+function yawp_check_version()
+{
+	if(!get_option('yawp_version') || get_option('yawp_version') < 11){
+		
+		update_option('yawp_version', 11);
+
+		// Adding default styling options
+		update_option('yawp_widget_bg_style', "background:#1A1A1A;\r\nborder: 1px solid #141414;\r\nborder-radius: 5px;\r\nbox-shadow: 0 0 4px #303030;\r\n");
+		update_option('yawp_widget_font_style', "color:#E8E8E8;\r\nfont-family:Helvetica;\r\n");
+	}
+}
 
 /*
 * Code below is responsible for handling unistallation hook
@@ -27,6 +45,9 @@ function yawp_uninstall()
 	delete_option('yawp_cache_time'); // Interval in minutes between connections to the server
 	delete_option('yawp_cache_time_formatted'); // Time of next update 
 	delete_option('yawp_cached_weather'); // Current weather cache
+	delete_option('yawp_version'); // Plugin version
+	delete_option('yawp_widget_bg_style'); // Current settings for widget's background style
+	delete_option('yawp_widget_font_style'); // Current settings for widget's font style
 }
 
 /*
@@ -170,7 +191,7 @@ function yawp_display()
 	}
 
 	$retval = '';
-	$retval .= '<div id="yawp_weather_widget" class="widget">';
+	$retval .= '<div id="yawp_weather_widget" class="widget" style="'.get_option('yawp_widget_bg_style').get_option('yawp_widget_font_style').'">';
 	$retval .= '<div id="yawp_city_name_section" class="yawp_weather">'.$weather_array["name"].'</div>';
 
 	(get_option('yawp_display_icon') == "checked") ? $retval .= '<div id="yawp_weather_icon_section" class="yawp_weather" '.$weather_array["weather_icon"].'></div>' : '';
@@ -243,7 +264,7 @@ function yawp_get_current_weather() //Function is very similar to the one that h
 		$weather_icon = 'images/heat_'.$time_of_day.'.png';
 	};
 
-	$weather_icon = 'style=background-image:url(\''.$image_url.$weather_icon.'\');height:100px;';
+	$weather_icon = 'style=background-image:url(\''.$image_url.$weather_icon.'\');height:120px;';
 	$temperature = get_option('yawp_scale') == "F" ? round((($decoded_response->main->temp) - 273.15) * 1.8 + 32).' &deg'.get_option('yawp_scale') : round(($decoded_response->main->temp) - 273.15).' &deg'.get_option('yawp_scale');
 	$conditions = $decoded_response->weather[0]->main;	
 	$wind = 'Wind '.round($decoded_response->wind->speed).' m/s';
@@ -326,7 +347,7 @@ class Yawp_Widget extends WP_Widget {
 		}
 
 		$retval = '';
-		$retval .= '<div id="yawp_weather_widget" class="widget">';
+		$retval .= '<div id="yawp_weather_widget" class="widget" style="'.get_option('yawp_widget_bg_style').get_option('yawp_widget_font_style').'">';
 		$retval .= '<div id="yawp_city_name_section" class="yawp_weather">'.$weather_array["name"].'</div>';
 
 		(get_option('yawp_display_icon') == "checked") ? $retval .= '<div id="yawp_weather_icon_section" class="yawp_weather" '.$weather_array["weather_icon"].'></div>' : '';
