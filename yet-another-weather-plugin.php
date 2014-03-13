@@ -3,14 +3,14 @@
 Plugin Name: Yawp
 Plugin URI: http://stepasyuk.com/yawp/
 Description: Allows to retrive weather for a given city from openweathermap.org
-Version: 1.1
+Version: 1.1.1
 Author: Stepan Stepasyuk
 Author URI: http://stepasyuk.com
 License: GPLv2
 */
 
 /*
-* Since version 1.1 it is possible to edit plugin's css file from the Options page. The code below checks
+* Since version 1.1.0 it is possible to edit plugin's css file from the Options page. The code below checks
 * is current version of the plugin is less than 1.1 and upgrades the plugin if needed.
 */
 

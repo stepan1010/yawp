@@ -6,13 +6,18 @@ Yet Another Weather Plugin is a WordPress plugin which allows you to retrive wea
 Changelog
 ====
 
-#### 1.1
+#### 1.1.1
+
+"Edit city display name" has been moved to Appearance settings.
+Fixed typos.
+
+#### 1.1.0
 
 Settings page reorganized and improved.
 Current city openweathermap id is now visible in the settings page.
 Can now edit widget's style from the settings page.
 
-#### 1.0
+#### 1.0.0
 
 Initial plugin release.
 
