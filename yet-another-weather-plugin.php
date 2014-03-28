@@ -3,7 +3,7 @@
 Plugin Name: Yawp
 Plugin URI: http://stepasyuk.com/yawp/
 Description: Allows to retrive weather for a given city from openweathermap.org
-Version: 1.1.1
+Version: 1.1.2
 Author: Stepan Stepasyuk
 Author URI: http://stepasyuk.com
 License: GPLv2
@@ -81,12 +81,12 @@ function yawp_admin() // Function that includes the actual settings page
 add_action( 'admin_init', 'yawp_admin_init' ); // Register our script
 function yawp_admin_init()
 {      
-    wp_register_script( 'yawp_find_city_script', plugins_url( 'js/yawp_find_city_script.js', __FILE__ ) );
+    wp_register_script( 'yawp-find-city-script', plugins_url( 'js/yawp-find-city-script.min.js', __FILE__ ) );
 } 
 
 function yawp_admin_scripts() // Link our already registered script to a page
 { 
-	wp_enqueue_script( 'yawp_find_city_script' );
+	wp_enqueue_script( 'yawp-find-city-script' );
 }
 
 add_action('wp_ajax_yawp_find_city', 'yawp_find_city'); // Backend function handler for city searching script
