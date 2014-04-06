@@ -155,5 +155,16 @@ echo '<p>' . __("Current city openweathermap id: ") . $yawp_city_id . '</p><br /
         <p class="submit">  
         <input type="submit" name="Submit" value="<?php _e('Save Options', 'yawp_trdom' ) ?>" />  
         </p>  
-    </form> 
+    </form>
+<?php
+    // Donate button
+	$donate_form = '<br /><p>Please donate to this plugin if you like it.';
+	$donate_form .= '<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">';
+	$donate_form .= '<input type="hidden" name="cmd" value="_s-xclick">';
+	$donate_form .= '<input type="hidden" name="hosted_button_id" value="9YJ6YFV7EJ8PG">';
+	$donate_form .= '<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">';
+	$donate_form .= '<img alt="" border="0" src="https://www.paypalobjects.com/ru_RU/i/scr/pixel.gif" width="1" height="1"></form></p>';
+
+	echo $donate_form;
+?>
 </div> 

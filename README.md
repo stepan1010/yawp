@@ -6,6 +6,10 @@ Yet Another Weather Plugin is a WordPress plugin which allows you to retrive wea
 Changelog
 ====
 
+#### 1.1.3
+
+Donate button added to the Settings page.
+
 #### 1.1.2
 
 JS city searching script minimized (slight performance improvement).
