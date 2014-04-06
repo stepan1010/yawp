@@ -8,7 +8,7 @@ Changelog
 
 #### 1.1.3
 
-Donate button added to the Settings page.
+Donate button added to the `"Settings"` page.
 
 #### 1.1.2
 
@@ -21,9 +21,9 @@ Fixed typos.
 
 #### 1.1.0
 
-Settings page reorganized and improved.
-Current city openweathermap id is now visible in the settings page.
-Can now edit widget's style from the settings page.
+`"Settings"` page reorganized and improved.
+Current city openweathermap id is now visible in the `"Settings"` page.
+Can now edit widget's style from the `"Settings"` page.
 
 #### 1.0.0
 
